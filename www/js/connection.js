@@ -1,6 +1,6 @@
 var con_states = new Array();
-var con_type = navigator.connection.type;
 var item = document.getElementById("connection.contype");
+var con_type = navigator.connection.type;
 
 con_states[Connection.UNKNOWN] 	= "Sconosciuta";
 con_states[Connection.ETHERNET] = "Ethernet";
