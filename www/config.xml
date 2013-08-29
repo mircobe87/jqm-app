@@ -7,7 +7,11 @@
     <author email="mircobe87@gmail.com">
         Mirco Bertelli
     </author>
+    
+    <!-- permessi -->
     <feature name="http://api.phonegap.com/1.0/device" />
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
+    
     <preference name="permissions" value="none" />
     <preference name="phonegap-version" value="2.9.0" />
     <preference name="orientation" value="default" />
