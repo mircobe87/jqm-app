@@ -19,9 +19,35 @@
 				<p id="gps.content.lat"></p>
 				<h3>Longitudine</h3>
 				<p id="gps.content.lon"></p>
-				<a href="javascript:gpsUpdate()" data-role="button" data-icon="refresh" data-iconpos="left"	data-theme="a">Update</a>
+				
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<a id="manualupdatebutton" href="javascript:gpsUpdate()" data-role="button" data-icon="refresh" data-iconpos="left"	data-theme="a">Update</a>
+					</div>
+					<div class="ui-block-b">
+						<div data-role="fieldcontain">
+							<select name="autoupdateswitch" id="autoupdateswitch" data-theme="a" data-role="slider">
+								<option value="off">
+									Man
+								</option>
+								<option value="on">
+									Auto
+								</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<p id="prova"></p>
 			</div>
 			<script src=js/gps.js></script>
+			<script >
+				$("#autoupdateswitch").bind ("change", function (event){
+					if ($("#autoupdateswitch").val() === "on")
+						$("#prova").append ("ON, ");
+					else
+						$("#prova").append ("OFF, ");
+				});
+			</script>
 		</div>
 	</body>
 </html>
