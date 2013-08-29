@@ -1,0 +1,27 @@
+<! DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+		<div data-role="page" id="gps">
+			<div data-role="header" data-theme="a">
+				<a 	class="ui-btn-left"
+					data-role="button"
+					data-rel="back"
+					data-icon="back"
+					data-iconpos="left"
+					data-transition="slide"
+					data-direction="reverse"
+				>Back</a>
+				<h3>GPS</h3>
+			</div>
+			<div data-role="content">
+				<h3>Latitudine</h3>
+				<p id="gps.content.lat"></p>
+				<h3>Longitudine</h3>
+				<p id="gps.content.lon"></p>
+				<a href="javascript:gpsUpdate()" data-role="button" data-icon="refresh" data-iconpos="left"	data-theme="a">Update</a>
+			</div>
+			<script src=js/gps.js></script>
+		</div>
+	</body>
+</html>
