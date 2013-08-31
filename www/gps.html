@@ -37,16 +37,52 @@
 						</div>
 					</div>
 				</div>
-				<p id="prova"></p>
 			</div>
 			<script src=js/gps.js></script>
 			<script >
-				$("#autoupdateswitch").bind ("change", function (event){
-					if ($("#autoupdateswitch").val() === "on")
-						$("#prova").append ("ON, ");
-					else
-						$("#prova").append ("OFF, ");
-				});
+				function addClass(obj, newClass){
+					var classi = String.split(obj.className, " ");
+					for (var i=0; i<classi.length; i++){
+						if (classi[i] == newClass) return;
+					}
+					obj.className = obj.className + " " + newClass;
+				}
+				
+				function remClass(obj, oldClass){
+					var classi = String.split(obj.className, " ");
+					var newClassName = "";
+					for (var i=0; i<classi.length; i++){
+						if (classi[i] != oldClass) newClassName = newClassName + " " + classi[i];
+					}
+					obj.className = newClassName;
+				}
+				
+				var gpsWatcherID;
+				
+				$( window ).ready(
+					function(){
+						$("#autoupdateswitch").one( "change",
+							function (event){
+								var btn = document.getElementById("manualupdatebutton");
+								if ($(this).val() === "on"){
+									addClass(btn, "ui-disabled");
+									gpsWatcherID = navigator.geolocation.watchPosition(geolocationSuccess, geolocationError, {maximumAge: 3000, timeout: 5000, enableHighAccuracy: true});
+									console.log("manualupdatebutton: hide");
+								}else{
+									remClass(btn, "ui-disabled");
+									navigator.geolocation.clearWatch(gpsWatcherID);
+									gpsWatcherID = udefined;
+									console.log("manualupdatebutton: show");
+								}
+							}
+						);
+						$(window).one("navigate",
+							function (event){
+								if (gpsWatcherID) navigator.geolocation.clearWatch(gpsWatcherID);
+							}
+						);
+					}
+				);
 			</script>
 		</div>
 	</body>
