@@ -63,9 +63,10 @@
 				
 				$( window ).ready(
 					function(){
-						$("#autoupdateswitch").one("click",
+						$("#autoupdateswitch").on("slidestop",
 							function (event){
 								var btn = document.getElementById("manualupdatebutton");
+								console.log("click");
 								if ($(this).val() === "on"){
 									addClass(btn, "ui-disabled");
 									gpsWatcherID = navigator.geolocation.watchPosition(geolocationSuccess, geolocationError, {maximumAge: 3000, timeout: 5000, enableHighAccuracy: true});
@@ -73,7 +74,7 @@
 								}else{
 									remClass(btn, "ui-disabled");
 									navigator.geolocation.clearWatch(gpsWatcherID);
-									gpsWatcherID = udefined;
+									gpsWatcherID = undefined;
 									console.log("manualupdatebutton: show");
 								}
 							}
