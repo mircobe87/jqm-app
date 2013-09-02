@@ -14,7 +14,7 @@
     
     <!-- Weinre Debug -->
     <feature name="debug-server" required="true">
-    	<param name="domain" value="http://localhost:8080"/>
+    	<param name="domain" value="http://192.168.0.3:8080"/>
     	<param name="key" value="mircobe87"/>
     </feature>
     
